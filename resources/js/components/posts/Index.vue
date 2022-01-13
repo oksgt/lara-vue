@@ -44,6 +44,17 @@ export default {
         this.axios.get(uri).then(response => {
             this.posts = response.data.data; 
         });
+    },
+    methods: {
+        PostDelete(id, index){
+            let uri = `http://localhost:8000/api/posts/${id}`;
+            this.axios.delete(uri)
+                .then(response => {
+                    this.posts.splice(index, 1);
+                }).catch(error => {
+                    alert('Oups! Error occured');
+                });
+        }
     }
 }
 </script>
